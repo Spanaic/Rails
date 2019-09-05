@@ -6,10 +6,11 @@ class TodolistsController < ApplicationController
   def create
 
     list = List.new(list_params)
-
+    # Listモデルから新規作成のメソッドが実行される→dbに入力内容が追加されたレコードを作成
+    # 作成されたカラムはストロングパラメータのみ
     list.save
-
     redirect_to todolist_path(list.id)
+
   end
   
   def index
