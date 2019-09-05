@@ -19,6 +19,20 @@ class TodolistsController < ApplicationController
   def show
     @list = List.find(params[:id])
   end
+
+  def edit
+    @list = List.find(params[:id])
+  end
+  
+  def update
+    list = List.find(params[:id])
+    list.update(list_params)
+    redirect_to todolist_path(list.id)
+  end
+  # 保存ボタンが押された段階で、
+  # 1.dbからidを見つける。
+  # 2. dbをストロングパラメータの範囲内で上書き処理。
+  # 3.showアクションへとリダイレクト。各idのtodolist_path(routeで指定されたshowへの名前付きルート)
   
   private
 
