@@ -33,6 +33,12 @@ class TodolistsController < ApplicationController
   # 1.dbからidを見つける。
   # 2. dbをストロングパラメータの範囲内で上書き処理。
   # 3.showアクションへとリダイレクト。各idのtodolist_path(routeで指定されたshowへの名前付きルート)
+
+  def destroy
+    list = List.find(params[:id])
+    list.destroy
+    redirect_to todolists_path
+  end
   
   private
 
